@@ -2,7 +2,7 @@ import PageTransition from "@/components/PageTransition";
 import { motion } from "framer-motion";
 import { ArrowRight, Download,Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-
+const WHATSAPP_NUMBER = "+91 9677571402";
 
 const Home = () => {
   return (
@@ -93,6 +93,14 @@ efficiency.
                 <Mail className="w-5 h-5" />
               </a>
               
+               <a
+                href={`https://api.whatsapp.com/qr/ZZZQLTMD2KQLN1?autoload=1&app_absent=0${WHATSAPP_NUMBER}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-secondary hover:bg-green-500/20 hover:text-green-500 transition-all duration-300 hover:scale-110"
+              >
+                <MessageCircle className="w-5 h-5" />
+              </a>
             </motion.div>
           
 
