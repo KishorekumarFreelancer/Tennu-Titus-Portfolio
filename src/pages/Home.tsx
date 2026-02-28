@@ -16,7 +16,7 @@ const Home = () => {
             className="mb-6"
           >
             <span className="inline-block px-4 py-1.5 rounded-full bg-secondary text-primary text-sm font-medium mb-8">
-              Welcome to my portfolio
+              Welcome to my portfoli
             </span>
           </motion.div>
 
