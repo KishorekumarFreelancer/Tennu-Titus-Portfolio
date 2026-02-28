@@ -4,10 +4,10 @@ import { User, MapPin, Briefcase, GraduationCap, Download } from "lucide-react";
 import profileImg from "@/assets/profile.jpeg";
 
 const details = [
-  { icon: User, label: "Name", value: "Your Name Here" },
-  { icon: MapPin, label: "Location", value: "Your City, Country" },
-  { icon: Briefcase, label: "Experience", value: "X+ Years" },
-  { icon: GraduationCap, label: "Education", value: "Your Degree" },
+  { icon: User, label: "Name", value: "TEENU TITUS T" },
+  { icon: MapPin, label: "Location", value: "Your City, India" },
+  { icon: Briefcase, label: "Experience", value: "1 month Internship TVS Lucas" },
+  { icon: GraduationCap, label: "Education", value: "2022 - 2026 B.E/ECE  " },
 ];
 
 const About = () => {
@@ -39,12 +39,12 @@ const About = () => {
               className="md:col-span-2"
             >
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Write your story here. Share your background, passion for development,
-                and what drives you to create amazing digital experiences.
-              </p>
+                I am an Electronics and Communication Engineering student with a strong passion for automation, programming, and technology-driven solutions. I have hands-on experience in projects like Solar Tracking Systems and RPA-based Movie Ticket Bots, where I applied my skills in Arduino, UiPath, Python, and web technologies.
+
+
               <p className="text-muted-foreground leading-relaxed mb-8">
-                Add more details about your journey, interests, and what makes you
-                unique as a developer. This is your space to connect with visitors.
+                Add more details about your journey, interests, andWith practical exposure from my internship at Lucas TVS in motor assembling, I have developed technical proficiency, attention to detail, and problem-solving skills. I am committed to building innovative and efficient solutions while continuously learning and improving my technical abilities.
+              </p>.
               </p>
 
               <a

@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "your@email.com" },
-  { icon: Phone, label: "Phone", value: "+1 234 567 890" },
-  { icon: MapPin, label: "Location", value: "Your City, Country" },
+  { icon: Mail, label: "Email", value: "titusteenu8@gmail.com " },
+  { icon: Phone, label: "Phone", value: "+91 9677571402" },
+  { icon: MapPin, label: "Location", value: "Your City, India" },
 ];
 
 const Contact = () => {

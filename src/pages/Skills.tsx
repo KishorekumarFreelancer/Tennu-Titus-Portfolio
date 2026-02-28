@@ -2,14 +2,24 @@ import PageTransition from "@/components/PageTransition";
 import { motion } from "framer-motion";
 
 const skills = [
-  { name: "React.js", level: 90 },
-  { name: "TypeScript", level: 85 },
+  { name: "C", level: 90 },
+  { name: "Python", level: 85 },
   { name: "JavaScript", level: 92 },
-  { name: "Node.js", level: 78 },
-  { name: "Tailwind CSS", level: 88 },
-  { name: "HTML & CSS", level: 95 },
+  { name: "Bootstrap", level: 78 },
+  { name: "HTML ", level: 88 },
+  { name: " CSS", level: 95 },
+
+  
+  { name: "Data Analyst", level: 82 },
+  { name: "UI/UX", level: 82 },
+
+  { name: "MySQL", level: 82 },
+  { name: "SQLITE", level: 82 },
+  
+  { name: "NumPy", level: 82 },
+  { name: "VS Code", level: 82 },
   { name: "Git & GitHub", level: 80 },
-  { name: "REST APIs", level: 82 },
+ 
 ];
 
 const Skills = () => {

@@ -1,7 +1,8 @@
 import PageTransition from "@/components/PageTransition";
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download,Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+
 
 const Home = () => {
   return (
@@ -26,7 +27,7 @@ const Home = () => {
             className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight mb-6"
           >
             Hi, I'm{" "}
-            <span className="text-gradient">Your Name</span>
+            <span className="text-gradient">TEENU TITUS T</span>
           </motion.h1>
 
           <motion.p
@@ -35,8 +36,9 @@ const Home = () => {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            A passionate developer crafting digital experiences that blend
-            creativity with clean code. Let's build something extraordinary.
+            A passionate Compassionate and dedicated social worker with a background in Electronics and Communication Engineering. Skilled in hands-on technical tasks and committed to delivering quality work with integrity and
+efficiency.
+
           </motion.p>
 
           <motion.div
@@ -67,6 +69,32 @@ const Home = () => {
               Get in Touch
             </Link>
           </motion.div>
+
+           {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="flex gap-4 justify-center lg:justify-start"
+            >
+             
+              <a
+                href="https://www.linkedin.com/in/teenu-titus-80a149299?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-secondary hover:bg-primary/20 hover:text-primary transition-all duration-300 hover:scale-110"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="mailto:titusteenu8@gmail.com"
+                className="p-3 rounded-full bg-secondary hover:bg-primary/20 hover:text-primary transition-all duration-300 hover:scale-110"
+              >
+                <Mail className="w-5 h-5" />
+              </a>
+              
+            </motion.div>
+          
 
           {/* Decorative element */}
           <motion.div
