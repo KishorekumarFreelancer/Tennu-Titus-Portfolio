@@ -7,7 +7,7 @@ const details = [
   { icon: User, label: "Name", value: "TEENU TITUS T" },
   { icon: MapPin, label: "Location", value: "Your City, India" },
   { icon: Briefcase, label: "Experience", value: "1 month Internship TVS Lucas" },
-  { icon: GraduationCap, label: "Education", value: "2022 - 2026 B.E/ECE  " },
+  { icon: GraduationCap, label: "Education", value: " B.E/ECE  " },
 ];
 
 const About = () => {
