@@ -1,6 +1,6 @@
 import PageTransition from "@/components/PageTransition";
 import { motion } from "framer-motion";
-import { User, MapPin, Briefcase, GraduationCap } from "lucide-react";
+import { User, MapPin, Briefcase, GraduationCap, Download } from "lucide-react";
 import profileImg from "@/assets/profile.jpeg";
 
 const details = [
@@ -46,6 +46,15 @@ const About = () => {
                 Add more details about your journey, interests, and what makes you
                 unique as a developer. This is your space to connect with visitors.
               </p>
+
+              <a
+                href="/resume.pdf"
+                download
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-heading font-semibold text-sm tracking-wide transition-all hover:opacity-90 mb-8"
+              >
+                <Download size={16} />
+                Download Resume
+              </a>
 
               <div className="grid sm:grid-cols-2 gap-4">
                 {details.map((item, i) => (

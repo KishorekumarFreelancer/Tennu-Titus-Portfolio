@@ -1,6 +1,6 @@
 import PageTransition from "@/components/PageTransition";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -52,6 +52,14 @@ const Home = () => {
               View Projects
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </Link>
+            <a
+              href="/resume.pdf"
+              download
+              className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-lg border border-border text-foreground font-heading font-semibold text-sm tracking-wide transition-colors hover:bg-secondary"
+            >
+              <Download size={16} />
+              Download Resume
+            </a>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg border border-border text-foreground font-heading font-semibold text-sm tracking-wide transition-colors hover:bg-secondary"
