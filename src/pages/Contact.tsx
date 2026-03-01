@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, Send } from "lucide-react";
 const contactInfo = [
   { icon: Mail, label: "Email", value: "titusteenu8@gmail.com " },
   { icon: Phone, label: "Phone", value: "+91 9677571402" },
-  { icon: MapPin, label: "Location", value: "Your City, India" },
+  { icon: MapPin, label: "Location", value: "Kanniyakumari, India" },
 ];
 
 const Contact = () => {

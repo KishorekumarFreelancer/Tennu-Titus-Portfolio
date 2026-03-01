@@ -5,7 +5,7 @@ import profileImg from "@/assets/profile.jpeg";
 
 const details = [
   { icon: User, label: "Name", value: "TEENU TITUS T" },
-  { icon: MapPin, label: "Location", value: "Your City, India" },
+  { icon: MapPin, label: "Location", value: "Kanniyakumari, India" },
   { icon: Briefcase, label: "Experience", value: "1 month Internship TVS Lucas" },
   { icon: GraduationCap, label: "Education", value: " B.E/ECE  " },
 ];
