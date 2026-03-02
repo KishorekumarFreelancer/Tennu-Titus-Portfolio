@@ -1,8 +1,9 @@
 import PageTransition from "@/components/PageTransition";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const contactInfo = [
   { icon: Mail, label: "Email", value: "titusteenu8@gmail.com " },
@@ -12,6 +13,7 @@ const contactInfo = [
 
 const Contact = () => {
   const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
   return (
     <PageTransition>
       <section className="min-h-screen pt-28 pb-16 px-6">
@@ -69,7 +71,7 @@ const Contact = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
               className="space-y-5"
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
                 const form = e.currentTarget;
                 const name = (form.elements.namedItem("name") as HTMLInputElement)?.value.trim() || "";
@@ -85,9 +87,22 @@ const Contact = () => {
                 setErrors(newErrors);
                 if (Object.keys(newErrors).length > 0) return;
 
-                const subject = encodeURIComponent(`Message from ${name}`);
-                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-                window.location.href = `mailto:titusteenu8@gmail.com?subject=${subject}&body=${body}`;
+                setIsSubmitting(true);
+                try {
+                  const { data, error } = await supabase.functions.invoke("send-contact", {
+                    body: { name, email, message },
+                  });
+
+                  if (error) throw error;
+
+                  toast({ title: "Message sent!", description: "Thank you for reaching out. I'll get back to you soon." });
+                  form.reset();
+                  setErrors({});
+                } catch (err) {
+                  toast({ title: "Failed to send", description: "Something went wrong. Please try again.", variant: "destructive" });
+                } finally {
+                  setIsSubmitting(false);
+                }
               }}
             >
               <div>
@@ -122,9 +137,10 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-primary text-primary-foreground font-heading font-semibold text-sm tracking-wide hover:opacity-90 transition-opacity"
+                disabled={isSubmitting}
+                className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-primary text-primary-foreground font-heading font-semibold text-sm tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50"
               >
-                Send Message <Send size={16} />
+                {isSubmitting ? <><Loader2 size={16} className="animate-spin" /> Sending...</> : <>Send Message <Send size={16} /></>}
               </button>
             </motion.form>
           </div>
