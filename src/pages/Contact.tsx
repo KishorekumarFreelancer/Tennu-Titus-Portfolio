@@ -66,11 +66,21 @@ const Contact = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
               className="space-y-5"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={(e) => {
+                e.preventDefault();
+                const form = e.currentTarget;
+                const name = (form.elements.namedItem("name") as HTMLInputElement)?.value || "";
+                const email = (form.elements.namedItem("email") as HTMLInputElement)?.value || "";
+                const message = (form.elements.namedItem("message") as HTMLTextAreaElement)?.value || "";
+                const subject = encodeURIComponent(`Message from ${name}`);
+                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+                window.location.href = `mailto:titusteenu8@gmail.com?subject=${subject}&body=${body}`;
+              }}
             >
               <div>
                 <label className="block text-sm font-medium mb-2 text-muted-foreground">Name</label>
                 <input
+                  name="name"
                   type="text"
                   placeholder="Your name"
                   className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
@@ -79,6 +89,7 @@ const Contact = () => {
               <div>
                 <label className="block text-sm font-medium mb-2 text-muted-foreground">Email</label>
                 <input
+                  name="email"
                   type="email"
                   placeholder="your@email.com"
                   className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
@@ -87,6 +98,7 @@ const Contact = () => {
               <div>
                 <label className="block text-sm font-medium mb-2 text-muted-foreground">Message</label>
                 <textarea
+                  name="message"
                   rows={5}
                   placeholder="Your message..."
                   className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
