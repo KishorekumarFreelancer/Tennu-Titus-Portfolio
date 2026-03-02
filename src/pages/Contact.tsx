@@ -1,6 +1,8 @@
 import PageTransition from "@/components/PageTransition";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { useState } from "react";
+import { toast } from "@/hooks/use-toast";
 
 const contactInfo = [
   { icon: Mail, label: "Email", value: "titusteenu8@gmail.com " },
@@ -9,6 +11,7 @@ const contactInfo = [
 ];
 
 const Contact = () => {
+  const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
   return (
     <PageTransition>
       <section className="min-h-screen pt-28 pb-16 px-6">
@@ -69,9 +72,19 @@ const Contact = () => {
               onSubmit={(e) => {
                 e.preventDefault();
                 const form = e.currentTarget;
-                const name = (form.elements.namedItem("name") as HTMLInputElement)?.value || "";
-                const email = (form.elements.namedItem("email") as HTMLInputElement)?.value || "";
-                const message = (form.elements.namedItem("message") as HTMLTextAreaElement)?.value || "";
+                const name = (form.elements.namedItem("name") as HTMLInputElement)?.value.trim() || "";
+                const email = (form.elements.namedItem("email") as HTMLInputElement)?.value.trim() || "";
+                const message = (form.elements.namedItem("message") as HTMLTextAreaElement)?.value.trim() || "";
+
+                const newErrors: { name?: string; email?: string; message?: string } = {};
+                if (!name) newErrors.name = "Name is required";
+                if (!email) newErrors.email = "Email is required";
+                else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) newErrors.email = "Enter a valid email";
+                if (!message) newErrors.message = "Message is required";
+
+                setErrors(newErrors);
+                if (Object.keys(newErrors).length > 0) return;
+
                 const subject = encodeURIComponent(`Message from ${name}`);
                 const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
                 window.location.href = `mailto:titusteenu8@gmail.com?subject=${subject}&body=${body}`;
@@ -83,8 +96,9 @@ const Contact = () => {
                   name="name"
                   type="text"
                   placeholder="Your name"
-                  className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  className={`w-full px-4 py-3 rounded-lg bg-card border ${errors.name ? "border-destructive" : "border-border"} text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
                 />
+                {errors.name && <p className="text-destructive text-xs mt-1">{errors.name}</p>}
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2 text-muted-foreground">Email</label>
@@ -92,8 +106,9 @@ const Contact = () => {
                   name="email"
                   type="email"
                   placeholder="your@email.com"
-                  className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  className={`w-full px-4 py-3 rounded-lg bg-card border ${errors.email ? "border-destructive" : "border-border"} text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
                 />
+                {errors.email && <p className="text-destructive text-xs mt-1">{errors.email}</p>}
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2 text-muted-foreground">Message</label>
@@ -101,8 +116,9 @@ const Contact = () => {
                   name="message"
                   rows={5}
                   placeholder="Your message..."
-                  className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
+                  className={`w-full px-4 py-3 rounded-lg bg-card border ${errors.message ? "border-destructive" : "border-border"} text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none`}
                 />
+                {errors.message && <p className="text-destructive text-xs mt-1">{errors.message}</p>}
               </div>
               <button
                 type="submit"
